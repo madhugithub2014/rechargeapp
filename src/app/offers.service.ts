@@ -1,20 +1,22 @@
 import { Injectable } from '@angular/core';
-import { Http,Response} from '@angular/http';
-import { Observable} from 'rxjs/observable';
+import { Http,Response,Headers, URLSearchParams, RequestOptions} from '@angular/http';
+import { Observable } from 'rxjs/Rx'
 import { Offer} from './offer';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 
-const API_URL = 'http://localhost:9000/api/recharge/v1/ind/offers/9916441110';
+const API_URL = 'http://localhost:7211/recharge/v1/ind/offers';
 
 @Injectable()
 export class OffersService {
   
   constructor(private _http:Http) { }
 
-  getOffers(type):Observable<Offer>{
-    return this._http.get(API_URL).map(response => {
+  getOffers():Observable<Offer>{
+  let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
+	let options = new RequestOptions({ headers: cpHeaders });
+    return this._http.get(API_URL,options).map(response => {
       const offers = response.json();
         return offers.map((offer) => new Offer(offer));
     })

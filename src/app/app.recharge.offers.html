@@ -1,14 +1,32 @@
 <h1>{{title}}</h1>
+<div>
+<div class="menu">
 <ul>
-    <li><a class="active" href="#tarrif">Tarrif Packs</a></li>
+    <li><a class="active" href="#tarrif">Main Plan</a></li>
     <li><a href="#mybestoffer">My Best Offers</a></li>
     <li><a href="#topup">Top Up</a></li>
     <li><a href="#datapacks">Data Packs</a></li>
     <li><a href="#combopacks">Combo Packs</a></li>
   </ul>
+</div>
+<div>
   <table>
-      <tr>
-          <td id="amt">{{amount}}</td>
-          <td id="desc">{{description}}</td>
-      </tr>
+    <tr>
+      <td class="planheader">PLANS</td>
+      <td class="planheader">VALIDITY</td>
+      <td class="planheader">BENEFITS</td>
+    </tr>
   </table>
+</div>
+<div>
+        <table *ngFor="let plan of pack">
+          <tr>
+            <td id="amt" class="amount plandesc">{{plan.currencyAmt}}</td>
+            <td class="validity plandesc">{{plan.days}} <span>days</span></td>
+            <td class="benifits plandesc">{{plan.data}} <span>{{plan.size}}</span></td>
+            <td><button type="submit" 
+              class="btn btn-primary" (click)="payment('amt')">Buy</button></td>
+          </tr>
+      </table>
+      </div>
+  </div>

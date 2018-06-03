@@ -1,18 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {HttpModule, RequestOptions, XHRBackend, Http} from "@angular/http";
+import {HttpModule} from "@angular/http";
 
 import { AppComponent } from './app.component';
 import {MobileNumber} from './app.mobile.number';
 import {ButtonsModule} from 'ngx-bootstrap';
 import {RouterModule,Routes} from '@angular/router';
-import {offers} from './app.recharge.offers';
+import {Offers} from './app.recharge.offers';
 import { OffersService } from './offers.service';
 
-const rechargeRoutes:Routes = [{path:"offerspage",component:offers}];
+const rechargeRoutes:Routes = [{path:"offerspage",component:Offers}];
 @NgModule({
   declarations: [
-    AppComponent,MobileNumber,offers
+    AppComponent,MobileNumber,Offers
   ],
   imports: [
     HttpModule,BrowserModule,ButtonsModule.forRoot(),RouterModule.forRoot(rechargeRoutes,{ enableTracing: true })
